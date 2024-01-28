@@ -39,6 +39,10 @@ The API is identical to SebRollen/toml-action
 
 ## Credits
 
+Copyright Sylvan Ravinet
+
+MIT LICENCE
+
 This action was inspired by SebRollen/toml-action. Big thanks to SebRollen
 for his contributions to the GitHub Actions community. 
 
