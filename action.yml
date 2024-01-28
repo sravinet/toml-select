@@ -1,24 +1,20 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
-
-# Add your action's branding here. This will appear on the GitHub Marketplace.
-branding:
-  icon: 'heart'
-  color: 'red'
-
-# Define your inputs here.
+name: 'Toml Select - TOML Field Extractor Action'
+description: 'Reads a specified field from a TOML file and sets it as an output.'
+author: 'Sylvan Ravinet'
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  file:
+    description: 'The path to the TOML file.'
     required: true
-    default: '1000'
-
-# Define your outputs here.
+  field:
+    description: 'The field to extract from the TOML file.'
+    required: true
 outputs:
-  time:
-    description: 'Your output description here'
-
+  value:
+    description: 'The value of the specified field in the TOML file.'
 runs:
-  using: node20
-  main: dist/index.js
+  using: 'node20'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'search' # Choose an appropriate icon from https://feathericons.com/
+  color: 'blue'
