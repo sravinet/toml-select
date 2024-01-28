@@ -9,11 +9,11 @@
 import * as core from '@actions/core'
 import * as main from '../src/main'
 
+import * as fs from 'fs'
+import * as path from 'path'
+
 // Mock the action's main function
 const runMock = jest.spyOn(main, 'run')
-
-// Other utilities
-const timeRegex = /^\d{2}:\d{2}:\d{2}/
 
 // Mock the GitHub Actions core library
 let debugMock: jest.SpyInstance
@@ -23,6 +23,16 @@ let setFailedMock: jest.SpyInstance
 let setOutputMock: jest.SpyInstance
 
 describe('action', () => {
+  const tempDir = path.join(__dirname, 'temp')
+  const tempFilePath = path.join(tempDir, 'file.toml')
+  const tomlContent = 'example = { value = "test" }'
+  const expectedOutputValue = 'test'
+
+  beforeAll(() => {
+    fs.mkdirSync(tempDir)
+    fs.writeFileSync(tempFilePath, tomlContent)
+  })
+
   beforeEach(() => {
     jest.clearAllMocks()
 
@@ -33,57 +43,79 @@ describe('action', () => {
     setOutputMock = jest.spyOn(core, 'setOutput').mockImplementation()
   })
 
-  it('sets the time output', async () => {
-    // Set the action's inputs as return values from core.getInput()
-    getInputMock.mockImplementation((name: string): string => {
-      switch (name) {
-        case 'milliseconds':
-          return '500'
-        default:
-          return ''
+  afterAll(() => {
+    fs.unlinkSync(tempFilePath)
+    fs.rm(tempDir, { recursive: true }, err => {
+      if (err) {
+        console.error(err)
       }
     })
-
-    await main.run()
-    expect(runMock).toHaveReturned()
-
-    // Verify that all of the core library functions were called correctly
-    expect(debugMock).toHaveBeenNthCalledWith(1, 'Waiting 500 milliseconds ...')
-    expect(debugMock).toHaveBeenNthCalledWith(
-      2,
-      expect.stringMatching(timeRegex)
-    )
-    expect(debugMock).toHaveBeenNthCalledWith(
-      3,
-      expect.stringMatching(timeRegex)
-    )
-    expect(setOutputMock).toHaveBeenNthCalledWith(
-      1,
-      'time',
-      expect.stringMatching(timeRegex)
-    )
-    expect(errorMock).not.toHaveBeenCalled()
   })
 
-  it('sets a failed status', async () => {
+  it('processes valid TOML file and field', async () => {
     // Set the action's inputs as return values from core.getInput()
     getInputMock.mockImplementation((name: string): string => {
       switch (name) {
-        case 'milliseconds':
-          return 'this is not a number'
+        case 'file':
+          return tempFilePath
+        case 'field':
+          return 'example.value'
         default:
           return ''
       }
     })
 
     await main.run()
-    expect(runMock).toHaveReturned()
+    expect(runMock).toHaveBeenCalled()
+    //expect(runMock).toHaveReturned()
 
-    // Verify that all of the core library functions were called correctly
-    expect(setFailedMock).toHaveBeenNthCalledWith(
-      1,
-      'milliseconds not a number'
+    // Verify that core.setOutput was called with the expected value
+    expect(core.setOutput).toHaveBeenCalledWith('value', expectedOutputValue)
+  })
+
+  it('sets a failed status for non-existent file', async () => {
+    // Set the action's inputs as return values from core.getInput()
+    getInputMock.mockImplementation((name: string): string => {
+      switch (name) {
+        case 'file':
+          return 'nonexistent.toml'
+        case 'field':
+          return 'example.value'
+        default:
+          return ''
+      }
+    })
+
+    await main.run()
+    expect(runMock).toHaveBeenCalled()
+
+    // Verify that core.setFailed was called with the expected error message
+    expect(core.setFailed).toHaveBeenCalledWith(
+      "File 'nonexistent.toml' not found"
     )
-    expect(errorMock).not.toHaveBeenCalled()
+  })
+
+  it('throws an error if the file input is missing', async () => {
+    getInputMock.mockImplementation((name: string) => {
+      if (name === 'field') {
+        return 'example.value'
+      }
+      return ''
+    })
+
+    await main.run()
+    expect(setFailedMock).toHaveBeenCalledWith("Input 'file' is required")
+  })
+
+  it('throws an error if the field input is missing', async () => {
+    getInputMock.mockImplementation((name: string) => {
+      if (name === 'file') {
+        return tempFilePath
+      }
+      return ''
+    })
+
+    await main.run()
+    expect(setFailedMock).toHaveBeenCalledWith("Input 'field' is required")
   })
 })
