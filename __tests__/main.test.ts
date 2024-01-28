@@ -16,10 +16,13 @@ import * as path from 'path'
 const runMock = jest.spyOn(main, 'run')
 
 // Mock the GitHub Actions core library
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let debugMock: jest.SpyInstance
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let errorMock: jest.SpyInstance
 let getInputMock: jest.SpyInstance
 let setFailedMock: jest.SpyInstance
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let setOutputMock: jest.SpyInstance
 
 describe('action', () => {
