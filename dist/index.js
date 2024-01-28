@@ -26978,6 +26978,7 @@ async function processTOMLFile(filePath, fieldPath) {
     const tomlObject = toml.parse(fileContent);
     //let value: toml.JsonMap | string = tomlObject;
     const fields = fieldPath.split('.');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let currentValue = tomlObject;
     for (const field of fields) {
         if (currentValue[field] === undefined) {
