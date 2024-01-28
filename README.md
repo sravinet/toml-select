@@ -103,8 +103,8 @@ or update release notes or changelogs.
 Database Migration Tools: Extract database connection strings or migration
 script parameters stored in TOML files.
 
-### Environment-Specific Configurations: Manage different configurations for
-development, staging, and production databases.
+### Environment-Specific Configurations: 
+Manage different configurations for development, staging, and production databases.
 
 ### Monitoring and Analytics:
 
