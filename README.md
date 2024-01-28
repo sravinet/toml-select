@@ -7,7 +7,6 @@ further steps in the GitHub Actions pipeline.
 ## Status
 [![Continuous Integration](https://github.com/sravinet/toml-select/actions/workflows/ci.yml/badge.svg)](https://github.com/sravinet/toml-select/actions/workflows/ci.yml)
 
-
 ## Inputs
 
 ### `file`
@@ -62,22 +61,23 @@ His dedication and contributions are greatly appreciated.
 
 ![DALL·E 2024-01-28 16 37 50 - Create an image in a pop art style, inspired by mid-20th century classic pop art techniques and color schemes  The artwork features a portrait of a co](https://github.com/sravinet/toml-select/assets/1691996/bd2c1cd6-1d49-4cee-a312-4b5fc511c98f)
 
-# Use cases
+## Use cases
 
 This GitHub Action, which reads a specific field from a TOML file, can be quite
 versatile and useful in various scenarios, especially in combination with
 different tools and cloud services. Here are some potential use cases:
 
-Continuous Integration and Deployment (CI/CD) Pipelines: 
+### Continuous Integration and Deployment (CI/CD) Pipelines: 
 GitHub Actions: Use in conjunction with other actions to set up CI/CD
 pipelines.
+
 Jenkins: Integrate with Jenkins pipelines for projects that utilize TOML
 configuration files.
 
-Cloud Application Deployments:
-
+### Cloud Application Deployments:
 AWS, Azure, Google Cloud: Extract configuration values for cloud deployments,
 such as environment variables, resource names, or identifiers.
+
 Kubernetes: Read configuration details for Kubernetes deployments, especially
 useful for projects that store Kubernetes manifests or Helm chart values in TOML.
 Configuration Management:
@@ -94,17 +94,19 @@ Serverless Framework: Integrate with serverless application deployments where
 configuration is managed through TOML files.
 Application Release Management:
 
-Semantic Versioning: Extract version numbers for automated release tagging
+### Semantic Versioning: Extract version numbers for automated release tagging
 and version management.
 Release Notes Generation: Pull specific information from TOML files to generate
 or update release notes or changelogs.
-Database Operations:
 
+### Database Operations:
 Database Migration Tools: Extract database connection strings or migration
 script parameters stored in TOML files.
-Environment-Specific Configurations: Manage different configurations for
+
+### Environment-Specific Configurations: Manage different configurations for
 development, staging, and production databases.
-Monitoring and Analytics:
+
+### Monitoring and Analytics:
 
 Prometheus/Grafana: Extract configuration for monitoring tools, especially
 if they use TOML for settings.
