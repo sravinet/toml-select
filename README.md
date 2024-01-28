@@ -123,7 +123,8 @@ Feature Flag Management:
 
 LaunchDarkly or similar services: Manage feature flags or rollouts by
 extracting flag settings from TOML files.
+
 Each use case would depend on the specific workflow requirements and how TOML
-files are used within the project or organization. The flexibility of your
+files are used within the project or organization. The flexibility of this
 GitHub Action allows it to be adapted for a wide range of automation tasks
 across different technologies and platforms.
