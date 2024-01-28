@@ -61,5 +61,3 @@ This project is made in honour of Tom Selleck, whose work has inspired many.
 His dedication and contributions are greatly appreciated.
 
 ![DALL·E 2024-01-28 16 37 50 - Create an image in a pop art style, inspired by mid-20th century classic pop art techniques and color schemes  The artwork features a portrait of a co](https://github.com/sravinet/toml-select/assets/1691996/bd2c1cd6-1d49-4cee-a312-4b5fc511c98f)
-
-
