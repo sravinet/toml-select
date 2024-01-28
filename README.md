@@ -4,6 +4,10 @@ This GitHub Action reads a specified field from a TOML file and sets it as an
 output. It's useful for workflows that need to extract data from TOML files for
 further steps in the GitHub Actions pipeline.
 
+# Status
+[![Continuous Integration](https://github.com/sravinet/toml-select/actions/workflows/ci.yml/badge.svg)](https://github.com/sravinet/toml-select/actions/workflows/ci.yml)
+
+
 ## Inputs
 
 ### `file`
