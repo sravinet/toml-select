@@ -5,6 +5,7 @@ output. It's useful for workflows that need to extract data from TOML files for
 further steps in the GitHub Actions pipeline.
 
 ## Status
+
 [![Continuous Integration](https://github.com/sravinet/toml-select/actions/workflows/ci.yml/badge.svg)](https://github.com/sravinet/toml-select/actions/workflows/ci.yml)
 
 ## Inputs
@@ -68,62 +69,67 @@ versatile and useful in various scenarios, especially in combination with
 different tools and cloud services. Here are some potential use cases:
 
 ### Continuous Integration and Deployment (CI/CD) Pipelines: 
-GitHub Actions: Use in conjunction with other actions to set up CI/CD
-pipelines.
 
-Jenkins: Integrate with Jenkins pipelines for projects that utilize TOML
+- GitHub Actions: Use in conjunction with other actions to set up CI/CD
+pipelines.
+- Jenkins: Integrate with Jenkins pipelines for projects that utilize TOML
 configuration files.
 
-### Cloud Application Deployments:
-AWS, Azure, Google Cloud: Extract configuration values for cloud deployments,
+### Cloud Application Deployments
+
+- AWS, Azure, Google Cloud: Extract configuration values for cloud deployments,
 such as environment variables, resource names, or identifiers.
-
-Kubernetes: Read configuration details for Kubernetes deployments, especially
+- Kubernetes: Read configuration details for Kubernetes deployments, especially
 useful for projects that store Kubernetes manifests or Helm chart values in TOML.
-Configuration Management:
 
-Ansible/Chef/Puppet: Extract specific configurations for use in managing
+### Configuration Management:
+
+- Ansible/Chef/Puppet: Extract specific configurations for use in managing
 infrastructure or application deployments.
-Terraform: Useful in workflows where Terraform configurations or variables
+- Terraform: Useful in workflows where Terraform configurations or variables
 are stored in TOML files.
-Serverless Applications:
 
-AWS Lambda or Azure Functions: Automate the deployment of serverless functions
+### Serverless Applications
+
+- AWS Lambda or Azure Functions: Automate the deployment of serverless functions
 with configurations specified in a TOML file.
-Serverless Framework: Integrate with serverless application deployments where
+- Serverless Framework: Integrate with serverless application deployments where
 configuration is managed through TOML files.
-Application Release Management:
 
-### Semantic Versioning: Extract version numbers for automated release tagging
-and version management.
-Release Notes Generation: Pull specific information from TOML files to generate
+### Application Release Management:
+
+- Semantic Versioning: Extract version numbers for automated release tagging and
+- version management.
+- Release Notes Generation: Pull specific information from TOML files to generate
 or update release notes or changelogs.
 
-### Database Operations:
-Database Migration Tools: Extract database connection strings or migration
+### Database Operations
+
+- Database Migration Tools: Extract database connection strings or migration
 script parameters stored in TOML files.
+- Environment-Specific Configurations: Manage different configurations for development,
+- staging, and production databases.
 
-### Environment-Specific Configurations: 
-Manage different configurations for development, staging, and production databases.
+### Monitoring and Analytics
 
-### Monitoring and Analytics:
-
-Prometheus/Grafana: Extract configuration for monitoring tools, especially
+- Prometheus/Grafana: Extract configuration for monitoring tools, especially
 if they use TOML for settings.
-ELK Stack: Configure Elasticsearch, Logstash, and Kibana settings through
+- ELK Stack: Configure Elasticsearch, Logstash, and Kibana settings through
 TOML files in automated setups.
-Development Tools:
 
-Docker: Read configurations for Docker setups or Docker Compose from TOML files.
+### Development Tools
+
+- Docker: Read configurations for Docker setups or Docker Compose from TOML files.
 Webpack or Other Build Tools: Extract build configuration or
 environment-specific settings.
-Software Testing:
 
+- Software Testing:
 Selenium or Other Testing Frameworks: Use for setting up testing environments
 or test configurations.
-Feature Flag Management:
 
-LaunchDarkly or similar services: Manage feature flags or rollouts by
+### Feature Flag Management:
+
+- LaunchDarkly or similar services: Manage feature flags or rollouts by
 extracting flag settings from TOML files.
 
 Each use case would depend on the specific workflow requirements and how TOML
