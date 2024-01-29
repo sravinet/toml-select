@@ -8,6 +8,9 @@ further steps in the GitHub Actions pipeline.
 
 [![Continuous Integration](https://github.com/sravinet/toml-select/actions/workflows/ci.yml/badge.svg)](https://github.com/sravinet/toml-select/actions/workflows/ci.yml)
 
+[![Coverage](https://github.com/sravinet/toml-select/badges/coverage.svg)](https://github.com/sravinet/toml-select/badges/coverage.svg)
+
+
 ## Inputs
 
 ### `file`

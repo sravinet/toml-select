@@ -5,57 +5,57 @@
 
 import { processTOMLFile } from '../src/read-toml'
 import { expect } from '@jest/globals'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 import * as fs from 'fs'
 import * as path from 'path'
 
 describe('TOML Reader', () => {
-  const tempDir = process.env.RUNNER_TEMP || path.join(__dirname, 'temp');
-  let tempFilePath: string;
-  let uniqueFilename: string;
+  const tempDir = process.env.RUNNER_TEMP || path.join(__dirname, 'temp')
+  let tempFilePath: string
+  let uniqueFilename: string
 
   beforeAll(() => {
     // If not within Github Runner, create the temp directory if it doesn't exist
     if (!process.env.RUNNER_TEMP && !fs.existsSync(tempDir)) {
-        fs.mkdirSync(tempDir);
+      fs.mkdirSync(tempDir)
     }
-  });
+  })
 
   afterAll(() => {
     if (!process.env.RUNNER_TEMP) {
       try {
-        fs.rmSync(tempDir, { recursive: true });
+        fs.rmSync(tempDir, { recursive: true })
       } catch (error) {
-        console.error(`Error removing temporary directory: ${error}`);
+        console.error(`Error removing temporary directory: ${error}`)
       }
     }
-  });
+  })
 
   beforeEach(() => {
-    uniqueFilename = `file-${uuidv4()}.toml`;
-    tempFilePath = path.join(tempDir, uniqueFilename);
-  });
+    uniqueFilename = `file-${uuidv4()}.toml`
+    tempFilePath = path.join(tempDir, uniqueFilename)
+  })
 
   afterEach(() => {
     if (!process.env.RUNNER_TEMP) {
       try {
         if (fs.existsSync(tempFilePath)) {
-          fs.unlinkSync(tempFilePath);
+          fs.unlinkSync(tempFilePath)
         }
       } catch (error) {
-        console.error(`Error removing temporary file: ${error}`);
+        console.error(`Error removing temporary file: ${error}`)
       }
     }
-  });
+  })
 
   it('should read a field from a TOML file', async () => {
-    const fieldPath = 'example.value';
-    const expectedValue = 'test';
-    fs.writeFileSync(tempFilePath, 'example = { value = "test" }');
+    const fieldPath = 'example.value'
+    const expectedValue = 'test'
+    fs.writeFileSync(tempFilePath, 'example = { value = "test" }')
 
-    const value = await processTOMLFile(tempFilePath, fieldPath);
-    expect(value).toEqual(expectedValue);
-  });
+    const value = await processTOMLFile(tempFilePath, fieldPath)
+    expect(value).toEqual(expectedValue)
+  })
 
   it('should throw an error if the file does not exist', async () => {
     const filePath = 'nonexistent.toml'
@@ -74,7 +74,6 @@ describe('TOML Reader', () => {
     await expect(processTOMLFile(tempFilePath, fieldPath)).rejects.toThrow(
       /Unexpected character, expecting string, number, datetime, boolean, inline array or inline table/
     )
-
   })
 
   it.skip('should throw an error if the field is not found in the TOML file', async () => {
@@ -85,7 +84,6 @@ describe('TOML Reader', () => {
     await expect(processTOMLFile(tempFilePath, fieldPath)).rejects.toThrow(
       "Field 'nonexistent.field' not found in the TOML file"
     )
-
   })
 
   it.skip('should correctly retrieve a nested field from the TOML file', async () => {
@@ -95,9 +93,8 @@ describe('TOML Reader', () => {
     fs.writeFileSync(tempFilePath, '[nested.example]\nvalue = "nestedTest"')
 
     const value = await processTOMLFile(tempFilePath, fieldPath)
-  
+
     expect(value).toEqual(expectedValue)
-  
   })
 
   it.skip('should handle non-string field values correctly', async () => {
@@ -123,6 +120,5 @@ describe('TOML Reader', () => {
     await expect(processTOMLFile(tempFilePath, fieldPath)).rejects.toThrow(
       `Expected a string at '${fieldPath}', but found a different type`
     )
-
   })
 })
