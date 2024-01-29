@@ -32,9 +32,11 @@ describe('action', () => {
   const expectedOutputValue = 'test'
 
   beforeAll(() => {
-    fs.mkdirSync(tempDir)
-    fs.writeFileSync(tempFilePath, tomlContent)
-  })
+    if (!fs.existsSync(tempDir)) {
+      fs.mkdirSync(tempDir);
+    }
+    fs.writeFileSync(tempFilePath, tomlContent);
+  });
 
   beforeEach(() => {
     jest.clearAllMocks()
@@ -47,13 +49,15 @@ describe('action', () => {
   })
 
   afterAll(() => {
-    fs.unlinkSync(tempFilePath)
+    if (fs.existsSync(tempFilePath)) {
+      fs.unlinkSync(tempFilePath);
+    }
     fs.rm(tempDir, { recursive: true }, err => {
       if (err) {
-        console.error(err)
+        console.error(err);
       }
-    })
-  })
+    });
+  });
 
   it('processes valid TOML file and field', async () => {
     // Set the action's inputs as return values from core.getInput()

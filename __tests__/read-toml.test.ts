@@ -15,17 +15,22 @@ describe('TOML Reader', () => {
   const tomlContent = 'example = { value = "test" }'
 
   beforeAll(() => {
-    fs.mkdirSync(tempDir)
-  })
+    if (!fs.existsSync(tempDir)) {
+      fs.mkdirSync(tempDir);
+    }
+    fs.writeFileSync(tempFilePath, tomlContent);
+  });
 
   afterAll(() => {
-    fs.unlinkSync(tempFilePath)
+    if (fs.existsSync(tempFilePath)) {
+      fs.unlinkSync(tempFilePath);
+    }
     fs.rm(tempDir, { recursive: true }, err => {
       if (err) {
-        console.error(err)
+        console.error(err);
       }
-    })
-  })
+    });
+  });
 
   it('should read a field from a TOML file', async () => {
     const fieldPath = 'example.value'
