@@ -6,9 +6,7 @@ further steps in the GitHub Actions pipeline.
 
 ## Status
 
-[![Continuous Integration](https://github.com/sravinet/toml-select/actions/workflows/ci.yml/badge.svg)](https://github.com/sravinet/toml-select/actions/workflows/ci.yml)
-
-[![Coverage](https://github.com/sravinet/toml-select/blob/main/badges/coverage.svg)](https://github.com/sravinet/toml-select/blob/main/badges/coverage.svg)
+[![Continuous Integration](https://github.com/sravinet/toml-select/actions/workflows/ci.yml/badge.svg)](https://github.com/sravinet/toml-select/actions/workflows/ci.yml) [![Coverage](https://github.com/sravinet/toml-select/blob/main/badges/coverage.svg)](https://github.com/sravinet/toml-select/blob/main/badges/coverage.svg)
 
 ## Inputs
 
@@ -42,6 +40,10 @@ Actions. It has been tested on various platforms and should work seamlessly
 in any GitHub Actions setup.
 
 The API is identical to SebRollen/toml-action
+
+## Contribution
+
+PRs are welcome. Suggestions: some [issues](https://github.com/sravinet/toml-select/issues) were identified.
 
 ## Credits
 
