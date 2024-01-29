@@ -10,7 +10,6 @@ further steps in the GitHub Actions pipeline.
 
 [![Coverage](https://github.com/sravinet/toml-select/badges/coverage.svg)](https://github.com/sravinet/toml-select/badges/coverage.svg)
 
-
 ## Inputs
 
 ### `file`
@@ -71,7 +70,7 @@ This GitHub Action, which reads a specific field from a TOML file, can be quite
 versatile and useful in various scenarios, especially in combination with
 different tools and cloud services. Here are some potential use cases:
 
-### Continuous Integration and Deployment (CI/CD) Pipelines: 
+### Continuous Integration and Deployment (CI/CD) Pipelines
 
 - GitHub Actions: Use in conjunction with other actions to set up CI/CD
 pipelines.
@@ -85,7 +84,7 @@ such as environment variables, resource names, or identifiers.
 - Kubernetes: Read configuration details for Kubernetes deployments, especially
 useful for projects that store Kubernetes manifests or Helm chart values in TOML.
 
-### Configuration Management:
+### Configuration Management
 
 - Ansible/Chef/Puppet: Extract specific configurations for use in managing
 infrastructure or application deployments.
@@ -99,7 +98,7 @@ with configurations specified in a TOML file.
 - Serverless Framework: Integrate with serverless application deployments where
 configuration is managed through TOML files.
 
-### Application Release Management:
+### Application Release Management
 
 - Semantic Versioning: Extract version numbers for automated release tagging and
 - version management.
@@ -130,7 +129,7 @@ environment-specific settings.
 Selenium or Other Testing Frameworks: Use for setting up testing environments
 or test configurations.
 
-### Feature Flag Management:
+### Feature Flag Management
 
 - LaunchDarkly or similar services: Manage feature flags or rollouts by
 extracting flag settings from TOML files.
