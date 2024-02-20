@@ -39,7 +39,7 @@ This action is compatible with most CI/CD workflows that support GitHub
 Actions. It has been tested on various platforms and should work seamlessly
 in any GitHub Actions setup.
 
-The API is identical to SebRollen/toml-action
+The API is identical to [SebRollen/toml-action]([url](https://github.com/SebRollen/toml-action))
 
 ## Contribution
 
@@ -51,7 +51,7 @@ Copyright Sylvan Ravinet
 
 MIT LICENCE
 
-This action was inspired by SebRollen/toml-action. Big thanks to SebRollen
+This action was inspired by [SebRollen/toml-action](https://github.com/SebRollen/toml-action). Big thanks to SebRollen
 for his contributions to the GitHub Actions community.
 
 ## Background
